@@ -4,41 +4,31 @@
 
 in .env.local add NEXT_PUBLIC_APIKEY=<yours elsevier api key>
 
-## then npm install and npm run dev
+## Project Overview
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+The Scopus API allows searching for articles, authors, and affiliations using different endpoints.
 
-## Getting Started
+Implemented Features
+✔ Search for Articles
 
-First, run the development server:
+API Endpoint: https://api.elsevier.com/content/search/scopus?query={query}
+Requires API Key (X-ELS-APIKey)
+Returns metadata like title, authors, publication name, DOI, and citations
+✔ Search for Authors
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+API Endpoint: https://api.elsevier.com/content/search/author?query={query}
+Requires OAuth Token (X-ELS-Authtoken) for detailed results
+Returns author name, affiliation, and Scopus ID
+✔ Search for Affiliations
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+API Endpoint: https://api.elsevier.com/content/search/affiliation?query={query}
+Requires OAuth Token (X-ELS-Authtoken)
+Returns institution name, country, and author count
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack: Next.js 15 (App Router), TypeScript, Fetch API
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## /app/api/scopus/route.ts is a server-side API endpoint in Next.js that fetches data from the Scopus API and returns it to the frontend.
 
-## Learn More
+## /components/ScopusSearch.tsx is a React component in Next.js that calls the API endpoint defined in route.ts to fetch search results from the Scopus API and display them on the frontend.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## /app/page.tsx shows the Scopus Search page
