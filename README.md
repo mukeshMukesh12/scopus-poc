@@ -1,3 +1,11 @@
+## Clone this project
+
+## Add .env.local
+
+in .env.local add NEXT_PUBLIC_APIKEY=<yours elsevier api key>
+
+## then npm install and npm run dev
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
